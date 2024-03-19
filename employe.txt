@@ -1,0 +1,201 @@
+
+mysql> create database student;
+ERROR 1007 (HY000): Can't create database 'student'; database exists
+mysql> use student;
+Database changed
+mysql> select *from emplyee;
+ERROR 1146 (42S02): Table 'student.emplyee' doesn't exist
+mysql> select *from emplye;
++------+---------+------------+---------------------+------------------+----------+
+| SSN  | name    | department | project_name        | project_location | salary   |
++------+---------+------------+---------------------+------------------+----------+
+| A12  | Arun    | HR         | smart villa         | Mumbai           |  1000.34 |
+| A13  | Ajay    | Finance    | smart               | Mumbai           |  1045.64 |
+| A14  | Anshig  | Finance    | Villa               | Delhi            |  2000.64 |
+| A15  | Abhay   | HR         | develeping          | Kochi            |  3000.78 |
+| A16  | Arjun   | Marketing  | marketing           | calicut          | 30700.78 |
+| A17  | Nishath | Production | Production planning | calicut          | 30750.58 |
+| A18  | Nooba   | HR         | trade planning      | Delhi            | 40000.58 |
+| A19  | Harshin | production | production sucess   | Kochi            | 40500.58 |
+| A20  | Lubina  | Finance    | sales develop       | calicut          | 40550.58 |
+| A21  | hisana  | Marketing  | trade develop       | Mumbai           |  4000.00 |
++------+---------+------------+---------------------+------------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select * from emplye where department=finance and project_location=Delhi;
+ERROR 1054 (42S22): Unknown column 'finance' in 'where clause'
+mysql> select * from emplye where department="finance" and project_location="Delhi";
++------+--------+------------+--------------+------------------+---------+
+| SSN  | name   | department | project_name | project_location | salary  |
++------+--------+------------+--------------+------------------+---------+
+| A14  | Anshig | Finance    | Villa        | Delhi            | 2000.64 |
++------+--------+------------+--------------+------------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from emplye where department="HR" or project_location="smart";
++------+-------+------------+----------------+------------------+----------+
+| SSN  | name  | department | project_name   | project_location | salary   |
++------+-------+------------+----------------+------------------+----------+
+| A12  | Arun  | HR         | smart villa    | Mumbai           |  1000.34 |
+| A15  | Abhay | HR         | develeping     | Kochi            |  3000.78 |
+| A18  | Nooba | HR         | trade planning | Delhi            | 40000.58 |
++------+-------+------------+----------------+------------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select *from emplye order by name;
++------+---------+------------+---------------------+------------------+----------+
+| SSN  | name    | department | project_name        | project_location | salary   |
++------+---------+------------+---------------------+------------------+----------+
+| A15  | Abhay   | HR         | develeping          | Kochi            |  3000.78 |
+| A13  | Ajay    | Finance    | smart               | Mumbai           |  1045.64 |
+| A14  | Anshig  | Finance    | Villa               | Delhi            |  2000.64 |
+| A16  | Arjun   | Marketing  | marketing           | calicut          | 30700.78 |
+| A12  | Arun    | HR         | smart villa         | Mumbai           |  1000.34 |
+| A19  | Harshin | production | production sucess   | Kochi            | 40500.58 |
+| A21  | hisana  | Marketing  | trade develop       | Mumbai           |  4000.00 |
+| A20  | Lubina  | Finance    | sales develop       | calicut          | 40550.58 |
+| A17  | Nishath | Production | Production planning | calicut          | 30750.58 |
+| A18  | Nooba   | HR         | trade planning      | Delhi            | 40000.58 |
++------+---------+------------+---------------------+------------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select *from emplye order by name desc;
++------+---------+------------+---------------------+------------------+----------+
+| SSN  | name    | department | project_name        | project_location | salary   |
++------+---------+------------+---------------------+------------------+----------+
+| A18  | Nooba   | HR         | trade planning      | Delhi            | 40000.58 |
+| A17  | Nishath | Production | Production planning | calicut          | 30750.58 |
+| A20  | Lubina  | Finance    | sales develop       | calicut          | 40550.58 |
+| A21  | hisana  | Marketing  | trade develop       | Mumbai           |  4000.00 |
+| A19  | Harshin | production | production sucess   | Kochi            | 40500.58 |
+| A12  | Arun    | HR         | smart villa         | Mumbai           |  1000.34 |
+| A16  | Arjun   | Marketing  | marketing           | calicut          | 30700.78 |
+| A14  | Anshig  | Finance    | Villa               | Delhi            |  2000.64 |
+| A13  | Ajay    | Finance    | smart               | Mumbai           |  1045.64 |
+| A15  | Abhay   | HR         | develeping          | Kochi            |  3000.78 |
++------+---------+------------+---------------------+------------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select min(salary) from emplye
+    -> select min(salary) from emplye;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select min(salary) from emplye' at line 2
+mysql> select min(salary)from emplye;
++-------------+
+| min(salary) |
++-------------+
+|     1000.34 |
++-------------+
+1 row in set (0.03 sec)
+
+mysql> select avg(salary)from emplye;
++--------------+
+| avg(salary)  |
++--------------+
+| 19355.049384 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select max(salary)from emplye;
++-------------+
+| max(salary) |
++-------------+
+|    40550.58 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select salary from emplye where salary between 10000 and 40000;
++----------+
+| salary   |
++----------+
+| 30700.78 |
+| 30750.58 |
++----------+
+2 rows in set (0.06 sec)
+mysql> select department from emplye  where department in('HR','Production','Finance');
++------------+
+| department |
++------------+
+| HR         |
+| Finance    |
+| Finance    |
+| HR         |
+| Production |
+| HR         |
+| production |
+| Finance    |
++------------+
+8 rows in set (0.07 sec)
+
+mysql> select *from emplye  where department in('HR','Production','Finance');
++------+---------+------------+---------------------+------------------+----------+
+| SSN  | name    | department | project_name        | project_location | salary   |
++------+---------+------------+---------------------+------------------+----------+
+| A12  | Arun    | HR         | smart villa         | Mumbai           |  1000.34 |
+| A13  | Ajay    | Finance    | smart               | Mumbai           |  1045.64 |
+| A14  | Anshig  | Finance    | Villa               | Delhi            |  2000.64 |
+| A15  | Abhay   | HR         | develeping          | Kochi            |  3000.78 |
+| A17  | Nishath | Production | Production planning | calicut          | 30750.58 |
+| A18  | Nooba   | HR         | trade planning      | Delhi            | 40000.58 |
+| A19  | Harshin | production | production sucess   | Kochi            | 40500.58 |
+| A20  | Lubina  | Finance    | sales develop       | calicut          | 40550.58 |
++------+---------+------------+---------------------+------------------+----------+
+8 rows in set (0.00 sec)
+
+mysql> select department from emplye where department not in( 'HR','production','Finance');
++------------+
+| department |
++------------+
+| Marketing  |
+| Marketing  |
++------------+
+mysql> select  count(department) from emplye group by department;
++-------------------+
+| count(department) |
++-------------------+
+|                 3 |
+|                 3 |
+|                 2 |
+|                 2 |
++-------------------+
+4 rows in set (0.06 sec)
+
+mysql> select  count(department) from emplye order by department;
++-------------------+
+| count(department) |
++-------------------+
+|                10 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table emplye add primary key(SSN);
+Query OK, 0 rows affected (2.21 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emplye;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| SSN              | varchar(10) | NO   | PRI | NULL    |       |
+| name             | varchar(20) | YES  |     | NULL    |       |
+| department       | varchar(20) | YES  |     | NULL    |       |
+| project_name     | varchar(20) | YES  |     | NULL    |       |
+| project_location | varchar(20) | YES  |     | NULL    |       |
+| salary           | float(10,2) | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+6 rows in set (0.28 sec)
+
+mysql> alter table emplye drop primary key;
+Query OK, 10 rows affected (1.44 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> desc emplye;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| SSN              | varchar(10) | NO   |     | NULL    |       |
+| name             | varchar(20) | YES  |     | NULL    |       |
+| department       | varchar(20) | YES  |     | NULL    |       |
+| project_name     | varchar(20) | YES  |     | NULL    |       |
+| project_location | varchar(20) | YES  |     | NULL    |       |
+| salary           | float(10,2) | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+---
