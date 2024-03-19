@@ -199,3 +199,53 @@ mysql> desc emplye;
 | project_location | varchar(20) | YES  |     | NULL    |       |
 | salary           | float(10,2) | YES  |     | NULL    |       |
 +------------------+-------------+------+-----+---------+---
+
+mysql> create table department(d_id varchar(20),dept_name varchar(30),dept_location varchar(30));
+Query OK, 0 rows affected (0.56 sec)
+
+mysql> insert into department values('D12','MCA','firstfloor');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into department values('D13','CSE','secondfloor');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into department values('D14','CIVIL','secondfloor');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into department values('D15','EEE','thirdfloor');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into department values('D16','MCA','firstfloor');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into department values('D17','BSC','secondfloor');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into department values('D18','MECH','fourthfloor');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into department values('D19','EC','fourthfloor');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into department values('D20','BCA','firstfloor');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into department values('D21','MBA','secondfloor');
+Query OK, 1 row affected (0.23 sec)
+
+mysql> select *from department;
++------+-----------+---------------+
+| d_id | dept_name | dept_location |
++------+-----------+---------------+
+| D12  | MCA       | firstfloor    |
+| D13  | CSE       | secondfloor   |
+| D14  | CIVIL     | secondfloor   |
+| D15  | EEE       | thirdfloor    |
+| D16  | MCA       | firstfloor    |
+| D17  | BSC       | secondfloor   |
+| D18  | MECH      | fourthfloor   |
+| D19  | EC        | fourthfloor   |
+| D20  | BCA       | firstfloor    |
+| D21  | MBA       | secondfloor   |
++------+-----------+---------------+
+10 rows in set (0.00 sec)
