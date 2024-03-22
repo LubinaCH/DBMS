@@ -248,4 +248,78 @@ mysql> select *from department;
 | D20  | BCA       | firstfloor    |
 | D21  | MBA       | secondfloor   |
 +------+-----------+---------------+
-10 rows in set (0.00 sec)
+10 rows in set (0.00 sec)mysql> alter table department add primary key(d_id);
+Query OK, 0 rows affected (1.73 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc department;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| d_id          | varchar(20) | NO   | PRI | NULL    |       |
+| dept_name     | varchar(30) | YES  |     | NULL    |       |
+| dept_location | varchar(30) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+3 rows in set (0.12 sec)
+mysql> create table orders(order_id varchar(15)not null,cust_id varchar(15),cust_name varchar(20),order_date date,primary key(order_id));
+Query OK, 0 rows affected (0.34 sec)mysql> insert into orders values('012','A01','rahul','2002-02-02');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into orders values('013','A02','rahana','2003-07-02');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into orders values('014','A03','athul','2001-07-02');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into orders values('015','A04','lubna','2004-07-07');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into orders values('016','A05','nashath','2004-12-04');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select *from orders;
++----------+---------+-----------+------------+
+| order_id | cust_id | cust_name | order_date |
++----------+---------+-----------+------------+
+| 012      | A01     | rahul     | 2002-02-02 |
+| 013      | A02     | rahana    | 2003-07-02 |
+| 014      | A03     | athul     | 2001-07-02 |
+| 015      | A04     | lubna     | 2004-07-07 |
+| 016      | A05     | nashath   | 2004-12-04 |
++----------+---------+-----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> create table product(p_id varchar(20),p_name varchar(25),order_id varchar(20));
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> insert into product values('p12','soap','012');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into product values('p13','comb','013');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into product values('p14','shamboo','014');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into product values('p15','conditioner','015');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select *from product;
++------+-------------+----------+
+| p_id | p_name      | order_id |
++------+-------------+----------+
+| p12  | soap        | 012      |
+| p13  | comb        | 013      |
+| p14  | shamboo     | 014      |
+| p15  | conditioner | 015      |
++------+-------------+----------+
+4 rows in set (0.00 sec)mysql> select orders.order_id,orders.cust_id,orders.cust_name,orders.order_date,product.p_id,product.p_name,product.order_id from orders join product on orders.order_id=product.order_id;
++----------+---------+-----------+------------+------+-------------+----------+
+| order_id | cust_id | cust_name | order_date | p_id | p_name      | order_id |
++----------+---------+-----------+------------+------+-------------+----------+
+| 012      | A01     | rahul     | 2002-02-02 | p12  | soap        | 012      |
+| 013      | A02     | rahana    | 2003-07-02 | p13  | comb        | 013      |
+| 014      | A03     | athul     | 2001-07-02 | p14  | shamboo     | 014      |
+| 015      | A04     | lubna     | 2004-07-07 | p15  | conditioner | 015      |
++----------+---------+-----------+------------+------+-------------+----------+
+4 rows in set (0.00 sec)
