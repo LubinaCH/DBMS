@@ -349,3 +349,65 @@ mysql> desc product;
 | order_id | varchar(20) | YES  | MUL | NULL    |       |
 +----------+-------------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
+create table coourse(staff_id int primary key not null,course_no varchar(20),course_name varchar(25));
+Query OK, 0 rows affected (0.71 sec)
+
+mysql> insert into coourse values('11','102','MCA');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into coourse values('12','103','CE');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into coourse values('13','104','MECH');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into coourse values('14','105','CIVIL');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into coourse values('15','106','EC');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select *from coourse;
++----------+-----------+-------------+
+| staff_id | course_no | course_name |
++----------+-----------+-------------+
+|       11 | 102       | MCA         |
+|       12 | 103       | CE          |
+|       13 | 104       | MECH        |
+|       14 | 105       | CIVIL       |
+|       15 | 106       | EC          |
++----------+-----------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> create table faculty(f_no int primary key not null,fname varchar(20),staff_id int,foreign key(staff_id)references coourse(staff_id));
+Query OK, 0 rows affected (0.58 sec)
+
+mysql> insert into faculty values('11','sneha','23');
+
+mysql> insert into faculty values('11','sneha','11');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into faculty values('13','sneha','12');
+Query OK, 1 row affected (0.24 sec)
+
+mysql> insert into faculty values('19','arjun','13');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into faculty values('20','anagha','14');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into faculty values('21','abhay','15');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select *from faculty;
++------+--------+----------+
+| f_no | fname  | staff_id |
++------+--------+----------+
+|   11 | sneha  |       11 |
+|   13 | sneha  |       12 |
+|   19 | arjun  |       13 |
+|   20 | anagha |       14 |
+|   21 | abhay  |       15 |
++------+--------+----------+
+5 rows in set (0.00 sec)
+
