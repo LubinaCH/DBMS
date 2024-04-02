@@ -421,4 +421,46 @@ mysql> select * from orders natural join product;
 +----------+---------+-----------+------------+------+-------------+
 4 rows in set (0.08 sec)
 
+mysql> select * from orders equi join product;
++----------+---------+-----------+------------+------+-------------+----------+
+| order_id | cust_id | cust_name | order_date | p_id | p_name      | order_id |
++----------+---------+-----------+------------+------+-------------+----------+
+| 012      | A01     | rahul     | 2002-02-02 | p12  | soap        | 012      |
+| 013      | A02     | rahana    | 2003-07-02 | p12  | soap        | 012      |
+| 014      | A03     | athul     | 2001-07-02 | p12  | soap        | 012      |
+| 015      | A04     | lubna     | 2004-07-07 | p12  | soap        | 012      |
+| 016      | A05     | nashath   | 2004-12-04 | p12  | soap        | 012      |
+| 012      | A01     | rahul     | 2002-02-02 | p13  | comb        | 013      |
+| 013      | A02     | rahana    | 2003-07-02 | p13  | comb        | 013      |
+| 014      | A03     | athul     | 2001-07-02 | p13  | comb        | 013      |
+| 015      | A04     | lubna     | 2004-07-07 | p13  | comb        | 013      |
+| 016      | A05     | nashath   | 2004-12-04 | p13  | comb        | 013      |
+| 012      | A01     | rahul     | 2002-02-02 | p14  | shamboo     | 014      |
+| 013      | A02     | rahana    | 2003-07-02 | p14  | shamboo     | 014      |
+| 014      | A03     | athul     | 2001-07-02 | p14  | shamboo     | 014      |
+| 015      | A04     | lubna     | 2004-07-07 | p14  | shamboo     | 014      |
+| 016      | A05     | nashath   | 2004-12-04 | p14  | shamboo     | 014      |
+| 012      | A01     | rahul     | 2002-02-02 | p15  | conditioner | 015      |
+| 013      | A02     | rahana    | 2003-07-02 | p15  | conditioner | 015      |
+| 014      | A03     | athul     | 2001-07-02 | p15  | conditioner | 015      |
+| 015      | A04     | lubna     | 2004-07-07 | p15  | conditioner | 015      |
+| 016      | A05     | nashath   | 2004-12-04 | p15  | conditioner | 015      |
++----------+---------+-----------+------------+------+-------------+----------+
+20 rows in set (0.00 sec)
+
+mysql> create view ordersview as select cust_id,cust_name from orders;
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> select *from ordersview;
++---------+-----------+
+| cust_id | cust_name |
++---------+-----------+
+| A01     | rahul     |
+| A02     | rahana    |
+| A03     | athul     |
+| A04     | lubna     |
+| A05     | nashath   |
++---------+-----------+
+5 rows in set (0.01 sec)
+
 
