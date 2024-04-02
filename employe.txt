@@ -410,4 +410,15 @@ mysql> select *from faculty;
 |   21 | abhay  |       15 |
 +------+--------+----------+
 5 rows in set (0.00 sec)
+mysql> select * from orders natural join product;
++----------+---------+-----------+------------+------+-------------+
+| order_id | cust_id | cust_name | order_date | p_id | p_name      |
++----------+---------+-----------+------------+------+-------------+
+| 012      | A01     | rahul     | 2002-02-02 | p12  | soap        |
+| 013      | A02     | rahana    | 2003-07-02 | p13  | comb        |
+| 014      | A03     | athul     | 2001-07-02 | p14  | shamboo     |
+| 015      | A04     | lubna     | 2004-07-07 | p15  | conditioner |
++----------+---------+-----------+------------+------+-------------+
+4 rows in set (0.08 sec)
+
 
