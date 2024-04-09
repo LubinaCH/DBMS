@@ -462,5 +462,14 @@ mysql> select *from ordersview;
 | A05     | nashath   |
 +---------+-----------+
 5 rows in set (0.01 sec)
-
+mysql> select order_id,cust_name from orders o where exists(select *from product p where p.order_id=o.order_id);
++----------+-----------+
+| order_id | cust_name |
++----------+-----------+
+| 012      | rahul     |
+| 013      | rahana    |
+| 014      | athul     |
+| 015      | lubna     |
++----------+-----------+
+4 rows in set (0.01 sec)
 
