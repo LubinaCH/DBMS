@@ -1,0 +1,100 @@
+> show dbs;
+admin     0.000GB
+config    0.000GB
+employee  0.000GB
+local     0.000GB
+lubina    0.000GB
+test      0.000GB
+> use lubina;
+switched to db lubina
+> db.createCollection('sample');
+{ "ok" : 1 }
+> db.sample.insert({"name":"lubna"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"nishath"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"anagha"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"fidha"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"hena"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"diya"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"kavya"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"nazeem"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"amal"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"anu"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"akshay","age":20})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"asin","age":19})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"hisana","age":18})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"emin","age":12})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"sinan","age":19})
+WriteResult({ "nInserted" : 1 })
+> db.sample.find()
+{ "_id" : ObjectId("66222791af4c1c9f530aa322"), "name" : "lubna" }
+{ "_id" : ObjectId("662227efaf4c1c9f530aa323"), "name" : "nishath" }
+{ "_id" : ObjectId("66222821af4c1c9f530aa324"), "name" : "anagha" }
+{ "_id" : ObjectId("6622283faf4c1c9f530aa325"), "name" : "fidha" }
+{ "_id" : ObjectId("6622285eaf4c1c9f530aa326"), "name" : "hena" }
+{ "_id" : ObjectId("662228c1af4c1c9f530aa327"), "name" : "diya" }
+{ "_id" : ObjectId("662228cdaf4c1c9f530aa328"), "name" : "kavya" }
+{ "_id" : ObjectId("662228d9af4c1c9f530aa329"), "name" : "nazeem" }
+{ "_id" : ObjectId("662228eaaf4c1c9f530aa32a"), "name" : "amal" }
+{ "_id" : ObjectId("6622290aaf4c1c9f530aa32b"), "name" : "anu" }
+{ "_id" : ObjectId("66222acdaf4c1c9f530aa32c"), "name" : "akshay", "age" : 20 }
+{ "_id" : ObjectId("66222aefaf4c1c9f530aa32d"), "name" : "asin", "age" : 19 }
+{ "_id" : ObjectId("66222b04af4c1c9f530aa32e"), "name" : "hisana", "age" : 18 }
+{ "_id" : ObjectId("66222b27af4c1c9f530aa32f"), "name" : "emin", "age" : 12 }
+{ "_id" : ObjectId("66222b55af4c1c9f530aa330"), "name" : "sinan", "age" : 19 }
+> db.sample.find.pretty()
+uncaught exception: TypeError: db.sample.find.pretty is not a function :
+@(shell):1:1
+> db.sample.find().pretty()
+{ "_id" : ObjectId("66222791af4c1c9f530aa322"), "name" : "lubna" }
+{ "_id" : ObjectId("662227efaf4c1c9f530aa323"), "name" : "nishath" }
+{ "_id" : ObjectId("66222821af4c1c9f530aa324"), "name" : "anagha" }
+{ "_id" : ObjectId("6622283faf4c1c9f530aa325"), "name" : "fidha" }
+{ "_id" : ObjectId("6622285eaf4c1c9f530aa326"), "name" : "hena" }
+{ "_id" : ObjectId("662228c1af4c1c9f530aa327"), "name" : "diya" }
+{ "_id" : ObjectId("662228cdaf4c1c9f530aa328"), "name" : "kavya" }
+{ "_id" : ObjectId("662228d9af4c1c9f530aa329"), "name" : "nazeem" }
+{ "_id" : ObjectId("662228eaaf4c1c9f530aa32a"), "name" : "amal" }
+{ "_id" : ObjectId("6622290aaf4c1c9f530aa32b"), "name" : "anu" }
+{
+        "_id" : ObjectId("66222acdaf4c1c9f530aa32c"),
+        "name" : "akshay",
+        "age" : 20
+}
+{
+        "_id" : ObjectId("66222aefaf4c1c9f530aa32d"),
+        "name" : "asin",
+        "age" : 19
+}
+{
+        "_id" : ObjectId("66222b04af4c1c9f530aa32e"),
+        "name" : "hisana",
+        "age" : 18
+}
+{
+        "_id" : ObjectId("66222b27af4c1c9f530aa32f"),
+        "name" : "emin",
+        "age" : 12
+}
+{
+        "_id" : ObjectId("66222b55af4c1c9f530aa330"),
+        "name" : "sinan",
+        "age" : 19
+}
+>
+
+
+
