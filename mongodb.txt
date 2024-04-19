@@ -94,7 +94,12 @@ uncaught exception: TypeError: db.sample.find.pretty is not a function :
         "name" : "sinan",
         "age" : 19
 }
->
+>> db.sample.find({age:{$gte:19}}).pretty()
+{
+        "_id" : ObjectId("66222acdaf4c1c9f530aa32c"),
+        "name" : "akshay",
+        "age" : 20
+}
 
 
 
