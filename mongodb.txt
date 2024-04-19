@@ -100,6 +100,45 @@ uncaught exception: TypeError: db.sample.find.pretty is not a function :
         "name" : "akshay",
         "age" : 20
 }
-
+> db.sample.insert({"name":"amal"})
+WriteResult({ "nInserted" : 1 })
+> db.sample.insert({"name":"sinan","age":19})
+WriteResult({ "nInserted" : 1 })
+> db.sample.distinct(name)
+uncaught exception: ReferenceError: name is not defined :
+@(shell):1:1
+> db.sample.distinct("name")
+[
+        "akshay",
+        "amal",
+        "anagha",
+        "anu",
+        "asin",
+        "diya",
+        "emin",
+        "fidha",
+        "hena",
+        "hisana",
+        "kavya",
+        "lubna",
+        "nazeem",
+        "nishath",
+        "sinan"
+]
+> db.sample.count
+function(query, options) {
+    const cmd =
+        Object.assign({count: this.getName(), query: this._massageObject(query || {})}, options);
+    if (cmd.readConcern) {
+        cmd.readConcern = {level: cmd.readConcern};
+    }
+    const res = this._db.runReadCommand(cmd);
+    if (!res.ok) {
+        throw _getErrorWithCode(res, "count failed: " + tojson(res));
+    }
+    return res.n;
+}
+> db.sample.count()
+17
 
 
