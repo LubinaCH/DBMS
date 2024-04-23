@@ -140,5 +140,113 @@ function(query, options) {
 }
 > db.sample.count()
 17
+> db.sample.updateOne({name:"amal"},{$set:{name:"fathima"}})
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+> db.sample.find()
+{ "_id" : ObjectId("66222791af4c1c9f530aa322"), "name" : "LUBINA" }
+{ "_id" : ObjectId("662227efaf4c1c9f530aa323"), "name" : "nishath" }
+{ "_id" : ObjectId("66222821af4c1c9f530aa324"), "name" : "anagha" }
+{ "_id" : ObjectId("6622283faf4c1c9f530aa325"), "name" : "fidha" }
+{ "_id" : ObjectId("6622285eaf4c1c9f530aa326"), "name" : "hena" }
+{ "_id" : ObjectId("662228c1af4c1c9f530aa327"), "name" : "diya" }
+{ "_id" : ObjectId("662228cdaf4c1c9f530aa328"), "name" : "kavya" }
+{ "_id" : ObjectId("662228d9af4c1c9f530aa329"), "name" : "nazeem" }
+{ "_id" : ObjectId("662228eaaf4c1c9f530aa32a"), "name" : "AMAl" }
+{ "_id" : ObjectId("6622290aaf4c1c9f530aa32b"), "name" : "anu" }
+{ "_id" : ObjectId("66222acdaf4c1c9f530aa32c"), "name" : "akshay", "age" : 20 }
+{ "_id" : ObjectId("66222aefaf4c1c9f530aa32d"), "name" : "asin", "age" : 19 }
+{ "_id" : ObjectId("66222b04af4c1c9f530aa32e"), "name" : "hisana", "age" : 18 }
+{ "_id" : ObjectId("66222b27af4c1c9f530aa32f"), "name" : "emin", "age" : 12 }
+{ "_id" : ObjectId("662236aeaf4c1c9f530aa331"), "name" : "NISHATH" }
+> var bulk=db.sample.initializeUnorderedBulkOp();
+> bulk.insert({name:"rani",age:"20"});
+> bulk.insert({name:"niya",age:"19"});
+> bulk.insert({name:"amina",age:"20"});
+> bulk.insert({name:"shesna",age:"22"});
+> bulk.insert({name:"aleena",age:"22"});
+> bulk.execute();
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 5,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> var bulk=db.sample.initializeOrderedBulkOp();
+> bulk.insert({name:"suja",age:"34"});
+> bulk.insert({name:"sooraj",age:"23"});
+> bulk.insert({name:"surya",age:"24"});
+> bulk.insert({name:"amaya",age:"24"});
+> bulk.insert({name:"lena",age:"25"});
+> bulk.execute();
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 5,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.sample.find()
+{ "_id" : ObjectId("66222791af4c1c9f530aa322"), "name" : "LUBINA" }
+{ "_id" : ObjectId("662227efaf4c1c9f530aa323"), "name" : "nishath" }
+{ "_id" : ObjectId("66222821af4c1c9f530aa324"), "name" : "anagha" }
+{ "_id" : ObjectId("6622283faf4c1c9f530aa325"), "name" : "fidha" }
+{ "_id" : ObjectId("6622285eaf4c1c9f530aa326"), "name" : "hena" }
+{ "_id" : ObjectId("662228c1af4c1c9f530aa327"), "name" : "diya" }
+{ "_id" : ObjectId("662228cdaf4c1c9f530aa328"), "name" : "kavya" }
+{ "_id" : ObjectId("662228d9af4c1c9f530aa329"), "name" : "nazeem" }
+{ "_id" : ObjectId("662228eaaf4c1c9f530aa32a"), "name" : "AMAl" }
+{ "_id" : ObjectId("6622290aaf4c1c9f530aa32b"), "name" : "anu" }
+{ "_id" : ObjectId("66222acdaf4c1c9f530aa32c"), "name" : "akshay", "age" : 20 }
+{ "_id" : ObjectId("66222aefaf4c1c9f530aa32d"), "name" : "asin", "age" : 19 }
+{ "_id" : ObjectId("66222b04af4c1c9f530aa32e"), "name" : "hisana", "age" : 18 }
+{ "_id" : ObjectId("66222b27af4c1c9f530aa32f"), "name" : "emin", "age" : 12 }
+{ "_id" : ObjectId("662236aeaf4c1c9f530aa331"), "name" : "NISHATH" }
+{ "_id" : ObjectId("662780e36f34b7994ecf1982"), "name" : "rani", "age" : "20" }
+{ "_id" : ObjectId("662780e36f34b7994ecf1983"), "name" : "niya", "age" : "19" }
+{ "_id" : ObjectId("662780e36f34b7994ecf1984"), "name" : "amina", "age" : "20" }
+{ "_id" : ObjectId("662780e36f34b7994ecf1985"), "name" : "shesna", "age" : "22" }
+{ "_id" : ObjectId("662780e36f34b7994ecf1986"), "name" : "aleena", "age" : "22" }
+Type "it" for more
+> it
+{ "_id" : ObjectId("662781be6f34b7994ecf1987"), "name" : "suja", "age" : "34" }
+{ "_id" : ObjectId("662781be6f34b7994ecf1988"), "name" : "sooraj", "age" : "23" }
+{ "_id" : ObjectId("662781be6f34b7994ecf1989"), "name" : "surya", "age" : "24" }
+{ "_id" : ObjectId("662781be6f34b7994ecf198a"), "name" : "amaya", "age" : "24" }
+{ "_id" : ObjectId("662781be6f34b7994ecf198b"), "name" : "lena", "age" : "25" }
+> db.sample.createIndex({name:-1})
+{
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "createdCollectionAutomatically" : false,
+        "ok" : 1
+}
+> db.sample.getIndexes()
+[
+        {
+                "v" : 2,
+                "key" : {
+                        "_id" : 1
+                },
+                "name" : "_id_"
+        },
+        {
+                "v" : 2,
+                "key" : {
+                        "name" : -1
+                },
+                "name" : "name_-1"
+        }
+]
+> db.sample.dropIndex({name:-1})
+{ "nIndexesWas" : 2, "ok" : 1 }
+> db.sample.getIndexes()
+[ { "v" : 2, "key" : { "_id" : 1 }, "name" : "_id_" } ]
 
 
